@@ -23,19 +23,18 @@ const AddReminder = props => {
             return;
         }
         if (!date){
-            alert('Please enter a date.');
+            alert('Please enter Date in format MM-DD-YYYY.');
             return;
         }
         
         
         try {
-            database.AddReminder(title, description,date);
+            database.addReminder(title, description,date);
         } catch (error) {
             console.log('Error adding reminder ' + error);
         }
 
         alert(title + " "  + ' Added!');
-        navigation.navigate('Add Reminder!');
     }
 
   return (
@@ -62,7 +61,7 @@ const AddReminder = props => {
                 onChangeText={value => setDate(value)}
                 style={styles.date}
                 clearButtonMode={'while-editing'}
-                placeholder={'Enter a Date'}
+                placeholder={'Enter Date in format MM-DD-YYYY'}
                 placeholderTextColor={'black'}
             />
         </View>

@@ -8,15 +8,16 @@ import styles from './styles';
 const PrioritiesScreen = props => {
 
     const navigation = useNavigation();
+return(
 <View style={styles.bottom}>
             <TouchableOpacity 
                 style={styles.button}
-                onPress={() => navigation.navigate('Add Priority')}
+                onPress={() => console.log('Add Priority')}
                 >
                 <Text style={styles.buttonText}>Add Priority</Text>
             </TouchableOpacity>
         </View>
-    console.log("Priority Added")
+);
   
 };
 

@@ -10,7 +10,7 @@ const TabNavigator = props => {
   return (
     <Tab.Navigator
         screenOptions={{
-            tabBarActiveTintColor: 'black',
+            tabBarActiveTintColor: 'blue',
             tabBarLabelStyle: {
                 flex: 1,
                 fontSize: 15,
@@ -22,8 +22,9 @@ const TabNavigator = props => {
             tabBarIconStyle: {display: 'none'},
         }}
     >
-        <Tab.Screen name={'Priorities'} component={PrioritiesScreen}/>
         <Tab.Screen name={'Reminders'} component={RemindersScreen}/>
+        <Tab.Screen name={'Priorities'} component={PrioritiesScreen}/>
+        
     </Tab.Navigator>
   );
 };

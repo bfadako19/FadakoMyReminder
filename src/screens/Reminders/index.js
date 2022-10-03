@@ -6,7 +6,7 @@ import styles from './styles';
 
 import { openDatabase } from "react-native-sqlite-storage";
 
-const GetRemindersDB = openDatabase({name: 'GetReminders.db'});
+const myRemindersDB = openDatabase({name: 'MyReminders.db'});
 const remindersTableName = 'reminders';
 
 const RemindersScreen = props => {
@@ -18,7 +18,7 @@ const RemindersScreen = props => {
   useEffect(() => {
     const listener = navigation.addListener('focus', () => {
       let results = [];
-      GetRemindersDB.transaction(txn => {
+      MyRemindersDB.transaction(txn => {
         txn.executeSql(
           `SELECT * FROM ${remindersTableName}`,
           [],
@@ -27,12 +27,12 @@ const RemindersScreen = props => {
             console.log('Length of lists ' + len);
             if (len > 0){
               for (let i = 0; i < len; i++){
-                let reminder = res.rows.reminder(i);
+                let item = res.rows.item(i);
                 results.push({
-                  id: reminder.id,
-                  title: reminder.title,
-                  description: reminder.description,
-                  date: reminder.date
+                  id: item.id,
+                  title: item.title,
+                  description: item.description,
+                  date: item.date
 
                 
                 });
@@ -57,8 +57,8 @@ const RemindersScreen = props => {
       <View>
         <FlatList 
           data={reminders}
-          renderItem={({reminder}) => <reminders post={reminder} />}
-          keyExtractor={reminder => reminder.id}
+          renderItem={({item}) => <reminders post={item} />}
+          keyExtractor={item => item.id}
         />
       </View>
         <View style={styles.bottom}>
